@@ -9,7 +9,7 @@ RUN git clone --depth 1 https://github.com/ivanhu5866/fwts-livecd-rootfs.git && 
     cd fwts-livecd-rootfs && debian/rules binary && \
     dpkg -i ../livecd-rootfs_*_arm64.deb
 VOLUME /image
-ENTRYPOINT ubuntu-image classic -a arm64 -d -p ubuntu-cpc -s jammy -O /image \
+ENTRYPOINT ubuntu-image classic -a arm64 -d -p ubuntu-cpc -s focal -O /image \
     --extra-ppas firmware-testing-team/ppa-fwts-stable uefi-aarch64-gadget/prime && \
     fwts_version=$(apt-cache show fwts | grep ^Version | egrep -o '[0-9]{2}.[0-9]{2}.[0-9]{2}' | sort -r | head -1) && \
     xz /image/arm64.img
