@@ -8,8 +8,7 @@ RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ jammy main universe" >> /etc
     echo "deb-src http://archive.ubuntu.com/ubuntu/ jammy-updates main universe" >> /etc/apt/sources.list && \
     echo "deb-src http://archive.ubuntu.com/ubuntu/ jammy-security main universe" >> /etc/apt/sources.list
 RUN apt update && apt -y install build-essential git ubuntu-image && apt-get -y build-dep livecd-rootfs
-RUN git clone --depth 1 https://github.com/ivanhu5866/uefi-aarch64-gadget && \
-    cd uefi-aarch64-gadget && snapcraft prime
+RUN git clone --depth 1 https://github.com/ivanhu5866/uefi-aarch64-gadget
 RUN git clone --depth 1 https://github.com/ivanhu5866/fwts-livecd-rootfs-jammy.git && \
     cd fwts-livecd-rootfs-jammy && debian/rules binary && \
     dpkg -i ../livecd-rootfs_*_arm64.deb
